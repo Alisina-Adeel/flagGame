@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flag Game</title>
+
+<style>
+body {
+  background: #0f172a;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  padding: 30px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border: 1px solid #38bdf8;
+}
+
+/* FLAG */
+#flag {
+  width: 200px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* OPTIONS */
+#options button {
+  display: block;
+  width: 200px;
+  margin: 8px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #38bdf8;
+  cursor: pointer;
+}
+
+/* RESULT */
+#result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2 id="playerInfo"></h2>
+
+<h3>Select a Continent 🌍</h3>
+<div class="grid" id="continentGrid"></div>
+
+<hr style="margin:30px 0; border-color:#334155">
+
+<img id="flag" src="" alt="flag">
+<div id="options"></div>
+<p id="result"></p>
+
+<script>
+    /* PLAYER */
+const playerName = localStorage.getItem("playerName") || "Player";
+let score = 0;
+
+function updatePlayer() {
+  document.getElementById("playerInfo").innerText =
+    playerName + " - Score: " + score;
+}
+
+updatePlayer();
+
+/* CONTINENT MAP (FIXED + MORE COMPLETE) */
+const continentMap = {
+  canada: "Americas",
+  "united states": "Americas",
+  brazil: "Americas",
+  mexico: "Americas",
+
+  france: "Europe",
+  germany: "Europe",
+  italy: "Europe",
+  "united kingdom": "Europe",
+  spain: "Europe",
+
+  japan: "Asia",
+  china: "Asia",
+  india: "Asia",
+  thailand: "Asia",
+
+  nigeria: "Africa",
+  egypt: "Africa",
+  kenya: "Africa",
+
+  australia: "Oceania",
+  "new zealand": "Oceania"
+};
+
+/* ALL COUNTRIES (AUTO FROM MAP) */
+const allCountries = Object.keys(continentMap);
+
+let countries = [];
+let countryData = [];
+let correctAnswer = "";
+
+/* LOAD CONTINENTS */
+function loadContinents() {
+  const continents = ["Asia","Europe","Africa","Americas","Oceania","All"];
+  const grid = document.getElementById("continentGrid");
+
+  grid.innerHTML = "";
+
+  continents.forEach(cont => {
+    grid.innerHTML += `
+      <div class="card" onclick="selectContinent('${cont}')">
+        <h3>${cont}</h3>
+      </div>
+    `;
+  });
+}
+
+/* SELECT CONTINENT */
+function selectContinent(cont) {
+  if (cont === "All") {
+    countries = allCountries;
+  } else {
+    countries = allCountries.filter(c => continentMap[c] === cont);
+  }
+
+  loadCountries();
+}
+
+/* LOAD COUNTRIES SAFELY */
+function loadCountries() {
+  countryData = [];
+
+  let loaded = 0;
+
+  countries.forEach(name => {
+    fetch(`https://restcountries.com/v3.1/name/${name}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data || !data[0]) return;
+
+        const c = data[0];
+
+        countryData.push({
+          name: c.name.common,
+          flag: c.flags?.png
+        });
+
+        loaded++;
+
+        if (loaded === countries.length) {
+          nextQuestion();
+        }
+      })
+      .catch(() => {
+        loaded++; // still continue if error
+
+        if (loaded === countries.length) {
+          nextQuestion();
+        }
+      });
+  });
+}
+
+/* NEXT QUESTION */
+function nextQuestion() {
+  document.getElementById("result").innerText = "";
+
+  const correct = countryData[Math.floor(Math.random() * countryData.length)];
+  correctAnswer = correct.name;
+
+  document.getElementById("flag").src = correct.flag;
+
+  let options = [correct.name];
+
+  while (options.length < 4) {
+    const random =
+      countryData[Math.floor(Math.random() * countryData.length)].name;
+
+    if (!options.includes(random)) options.push(random);
+  }
+
+  options.sort(() => Math.random() - 0.5);
+
+  const box = document.getElementById("options");
+  box.innerHTML = "";
+
+  options.forEach(name => {
+    const btn = document.createElement("button");
+    btn.innerText = name;
+    btn.onclick = () => checkAnswer(name);
+    box.appendChild(btn);
+  });
+}
+
+/* CHECK */
+function checkAnswer(selected) {
+  if (selected === correctAnswer) {
+    score++;
+    document.getElementById("result").innerText = "✅ Correct!";
+  } else {
+    document.getElementById("result").innerText =
+      "❌ Wrong! Answer: " + correctAnswer;
+  }
+
+  updatePlayer();
+  setTimeout(nextQuestion, 1000);
+}
+
+/* START */
+loadContinents();
+</script>
+
+</body>
+</html>

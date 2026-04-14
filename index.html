@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adeel Game</title>
+<link rel="stylesheet" href="/css/style.css">
+  <script src="/script/script.js" defer></script>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">Adeel Game</div>
+
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about"> About</a></li>
+      <li><a href="#">My Game</a></li>
+      <li><a href="Learning">Learning </a></li>
+      <li><a href="#contact">Contact</a></li>
+      
+    </ul>
+
+    <button>Dark or ligth mode</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Canada's Top Gaming Platform</h1>
+
+    <div class="search">
+      <input id="searchInput" placeholder="Search city or title...">
+      <select id="typeFilter" onchange="filterByRegion(this.value)">
+  <option value="">All Continents</option>
+  <option value="Asia">Asia</option>
+  <option value="Europe">Europe</option>
+  <option value="Africa">Africa</option>
+  <option value="Americas">Americas</option>
+  <option value="Oceania">Oceania</option>
+</select>
+      <button onclick="searchCountry()">Search</button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 🌦️ LIVE WEATHER -->
+<div class="weather" id="weather">
+  <h3>🌦️ Loading weather...</h3>
+</div>
+
+<div class="start-btn">
+  <button onclick="alert('Game starting soon 🎮')">Start Game</button>
+</div>
+
+
+<section class="Top-players">Top players Countries</section>
+<div class="grid" id="grid"></div>
+
+
+<div class="section-divider"></div>
+
+
+<section id="about">
+  <div class="about-container">
+    <h2>🎮 Challenges</h2>
+
+    <p>
+      Game is an interactive platform designed to help players explore the world in a fun and engaging way.
+      Test your knowledge by guessing countries, learning about their capitals, regions, and cultures.
+    </p>
+    <br>
+
+    <div class="about-cards">
+      <div class="about-box">
+        <h3>🌍 Learn Geography</h3>
+        <p>Discover countries, capitals, and continents while playing.</p>
+      </div>
+
+      <div class="about-box">
+        <h3>🎯 Challenge Yourself</h3>
+        <p>Improve your memory and test your global knowledge skills.</p>
+      </div>
+
+      <div class="about-box">
+        <h3>🏆 Compete</h3>
+        <p>Play with friends and become a top player on the leaderboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="section-divider"></div>
+
+<section id="about" class="about">
+  <div class="about-row">
+
+    <!-- LEFT: TEXT -->
+    <div class="about-text">
+      <h2>🌍 About This Game</h2>
+      <p>
+        This game is designed to help players learn and become familiar with flags from every country in the world. 
+        By playing, you will improve your memory, recognize national flags, and build your global knowledge in a fun and interactive way.
+      </p>
+
+      <p>
+        Whether you're a beginner or a geography expert, this game makes learning flags simple, engaging, and enjoyable.
+      </p>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="about-image">
+      <img src="https://flagcdn.com/w320/un.png" alt="Flags of the world">
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="game-section" id="myGame">
+  <h2>🎮 My Game</h2>
+
+  <div class="game-box">
+    
+    <p>Enter your name to start the game</p>
+
+    <input id="playerName" placeholder="Enter your name..." />
+
+    <div class="game-buttons">
+      <button onclick="goToGame()">Start Game 🎮</button>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="section-divider"></div>
+
+<section class="how">
+  <h2>🕹️ How to Play</h2>
+
+  <div class="how-container">
+
+    <div class="how-step">
+      <span>1</span>
+      <p>A random country flag will appear on the screen.</p>
+    </div>
+
+    <div class="how-step">
+      <span>2</span>
+      <p>You will see 4 possible country names as options.</p>
+    </div>
+
+    <div class="how-step">
+      <span>3</span>
+      <p>Select the correct country that matches the flag.</p>
+    </div>
+
+    <div class="how-step">
+      <span>4</span>
+      <p>Earn points for each correct answer and improve your score!</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="contact" id="contact">
+  <h2>📩 Contact Us</h2>
+
+  <div class="contact-container">
+    
+    <div class="contact-info">
+      <h3>Get in touch</h3>
+      <p>Have questions or feedback? Reach out to us anytime!</p>
+
+      <p>📧 Email: support@adeelgame.com</p>
+      <p>📍 Location: Canada</p>
+    </div>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message..." rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+  </div>
+</section>
+
+<footer style="background:#0f172a; color:white; padding:20px; text-align:center; margin-top:40px; border-top:2px solid #334155;">
+  
+  <div style="margin-bottom:10px;">
+    <a href="#" style="color:#38bdf8; margin:0 10px; text-decoration:none;">Terms & Conditions</a>
+    |
+    <a href="#" style="color:#38bdf8; margin:0 10px; text-decoration:none;">Privacy Policy</a>
+    |
+    <a href="#" style="color:#38bdf8; margin:0 10px; text-decoration:none;">Contact Us</a>
+  </div>
+
+  <p style="font-size:14px; color:#94a3b8;">
+    © 2026 Your Website Name. All rights reserved.
+  </p>
+
+</footer>
+
+
+</body>
+</html>
