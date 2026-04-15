@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flag Game</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 30px;
+  }
+
+  h1 { text-align: center; }
+
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+  }
+
+  input {
+    padding: 12px;
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: #111827;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  img { width: 100px; border-radius: 10px; }
+
+  .weather {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 12px;
+    border-radius: 12px;
+    width: 180px;
+    font-size: 13px;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>🌍  Learn about countries</h1>
+
+<!-- WEATHER -->
+<div class="weather" id="weather">
+  <h3>Loading weather...</h3>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input id="searchInput" placeholder="Search country..." />
+  <button onclick="searchCountry()">Search</button>
+  <button onclick="resetSearch()">Reset</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+
+/* ---------- COUNTRY LIST ---------- */
+const countries = [
+  "canada",
+  "japan",
+  "france",
+  "germany",
+  "brazil",
+  "australia",
+  "china",
+  "united states",
+  "united arab emirates",
+  "india",
+  "pakistan",
+  "bangladesh",
+  "nepal",
+  "sri lanka",
+  "afghanistan",
+  "iran",
+  "iraq",
+  "turkey",
+  "saudi arabia",
+  "qatar",
+  "kuwait",
+  "oman",
+  "egypt",
+  "morocco",
+  "algeria",
+  "tunisia",
+  "nigeria",
+  "kenya",
+  "ethiopia",
+  "south africa",
+  "ghana",
+  "tanzania",
+  "uganda",
+  "mexico",
+  "argentina",
+  "chile",
+  "colombia",
+  "peru",
+  "venezuela",
+  "uruguay",
+  "paraguay",
+  "bolivia",
+  "united kingdom",
+  "italy",
+  "spain",
+  "portugal",
+  "netherlands",
+  "belgium",
+  "sweden",
+  "norway",
+  "denmark",
+  "finland",
+  "poland",
+  "switzerland",
+  "austria",
+  "greece",
+  "czech republic",
+  "hungary",
+  "romania",
+  "ukraine",
+  "russia",
+  "ireland",
+  "iceland",
+  "croatia",
+  "serbia",
+  "slovakia",
+  "slovenia",
+  "bulgaria",
+  "malaysia",
+  "indonesia",
+  "philippines",
+  "vietnam",
+  "thailand",
+  "singapore",
+  "south korea",
+  "north korea",
+  "new zealand",
+  "papua new guinea",
+  "fiji",
+  "mongolia",
+  "kazakhstan",
+  "uzbekistan",
+  "turkmenistan",
+  "azerbaijan",
+  "armenia",
+  "georgia",
+  "israel",
+  "jordan",
+  "lebanon",
+  "syria",
+  "yemen",
+  "sudan",
+  "libya",
+  "angola",
+  "zambia",
+  "zimbabwe",
+  "botswana"
+];
+
+let countryData = [];
+
+/* ---------- WEATHER ---------- */
+function loadWeather(lat, lon) {
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.current_weather) return;
+
+      const w = data.current_weather;
+      document.getElementById("weather").innerHTML = `
+        <h3>🌦️ Weather</h3>
+        <p>${w.temperature}°C</p>
+        <p>Wind: ${w.windspeed} km/h</p>
+      `;
+    })
+    .catch(() => {
+      document.getElementById("weather").innerHTML = `<h3>Error ❌</h3>`;
+    });
+}
+
+navigator.geolocation.getCurrentPosition(
+  pos => loadWeather(pos.coords.latitude, pos.coords.longitude),
+  () => loadWeather(43.7, -79.4)
+);
+
+/* ---------- LOAD COUNTRIES ---------- */
+function loadCountries() {
+  countries.forEach(name => {
+    fetch(`https://restcountries.com/v3.1/name/${name}`)
+      .then(res => res.json())
+      .then(data => {
+        const c = data[0];
+
+        countryData.push({
+          name: c.name.common,
+          capital: c.capital?.[0] || "N/A",
+          region: c.region,
+          population: c.population,
+          flag: c.flags.png
+        });
+
+        renderCountries(countryData);
+      });
+  });
+}
+
+/* ---------- RENDER ---------- */
+function renderCountries(list) {
+  const grid = document.getElementById("grid");
+
+  const html = list.map(c => `
+    <div class="card">
+      <img src="${c.flag}" alt="${c.name}" />
+      <h2>${c.name}</h2>
+      <p>Capital: ${c.capital}</p>
+      <p>Region: ${c.region}</p>
+      <p>Population: ${c.population.toLocaleString()}</p>
+      <button onclick="explore('${c.name}')">Explore</button>
+    </div>
+  `).join("");
+
+  grid.innerHTML = html;
+}
+
+/* ---------- SEARCH ---------- */
+function searchCountry() {
+  const value = document.getElementById("searchInput").value.toLowerCase();
+
+  const filtered = countryData.filter(c =>
+    c.name.toLowerCase().includes(value)
+  );
+
+  renderCountries(filtered);
+}
+
+/* ---------- LIVE SEARCH (BETTER UX) ---------- */
+document.getElementById("searchInput").addEventListener("input", () => {
+  searchCountry();
+});
+
+/* ---------- RESET ---------- */
+function resetSearch() {
+  document.getElementById("searchInput").value = "";
+  renderCountries(countryData);
+}
+
+/* ---------- EXPLORE ---------- */
+function explore(name) {
+  alert("Exploring " + name + " 🌍");
+}
+
+/* ---------- START ---------- */
+loadCountries();
+
+</script>
+
+</body>
+</html>
