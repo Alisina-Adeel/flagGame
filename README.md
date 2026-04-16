@@ -12,11 +12,13 @@ Players test their geography knowledge by guessing the correct country from flag
 ⚡ Dynamic questions using REST Countries API
 📱 Responsive and modern UI
 🎮 Simple and fun gameplay
-🖼️ Preview
+---
 
-Add your screenshot here
+## 🖼️ Preview
 
-![Game Preview](game.png)
+<img src="doc/game.png" width="700"/>
+
+---
 🚀 How to Play
 Enter your name (if included in your version)
 Select a continent or choose "All"
@@ -37,12 +39,24 @@ https://restcountries.com/
 
 For country names, flags, and data.
 
-📂 Project Structure
-flag-game/
-│── index.html
-│── style.css
-│── script.js
-│── README.md
+Game/
+│
+├── css/
+│   └── style.css
+│
+├── doc/
+│   ├── wirefrim/
+│   │   ├── about.jpg
+│   │   ├── Cart page.jpg
+│   │   ├── Contactform.jpg
+│   │   ├── Home page.jpg
+│   │   └── How to play.jpg
+│   └── game.png
+│
+├── country.html
+├── game.html
+├── index.html
+└── README.md
 ⚙️ Setup Instructions
 Clone the repository:
 git clone https://github.com/your-username/flag-game.git
@@ -54,11 +68,13 @@ Run index.html in your browser
 🔥 Streak bonus system
 📊 Accuracy percentage
 🎨 Dark/Light mode toggle
-👨‍💻 Author
+👨‍💻 Author: Alisina Adeel
 
-Adeel Game Project
+Flag Game Project
 Made with ❤️ using JavaScript
 
 📜 License
 
 This project is open source and free to use.
+
+Future Plan
