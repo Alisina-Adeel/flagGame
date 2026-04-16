@@ -1,41 +1,62 @@
-# flagGame
-🌍 Flag Game 🎮
+# 🌍 Flag Game 🎮
 
-A fun and interactive country flag quiz game built with HTML, CSS, and JavaScript.
+A fun and interactive **country flag quiz game** built with HTML, CSS, and JavaScript.
 Players test their geography knowledge by guessing the correct country from flags and selecting continents to play.
 
-🎯 Features
-🌍 Select continents (Asia, Europe, Africa, Americas, Oceania, or All)
-🏳️ Guess countries from real flags
-🧠 Score tracking (Correct & Wrong answers)
-👤 Player name system
-⚡ Dynamic questions using REST Countries API
-📱 Responsive and modern UI
-🎮 Simple and fun gameplay
-🖼️ Preview
+---
 
+## 🎯 Features
 
-![Game Preview](game.png)
-🚀 How to Play
-Enter your name (if included in your version)
-Select a continent or choose "All"
-A flag will appear on the screen
-Choose the correct country from 4 options
-Earn points for correct answers
-Try to get the highest score! 🏆
-🛠️ Technologies Used
-HTML5
-CSS3 (Glassmorphism UI)
-JavaScript (Vanilla JS)
-REST Countries API 🌍
-📡 API Used
+* 🌍 Select continents (Asia, Europe, Africa, Americas, Oceania, or All)
+* 🏳️ Guess countries from real flags
+* 🧠 Score tracking (Correct & Wrong answers)
+* 👤 Player name system
+* ⚡ Dynamic questions using REST Countries API
+* 📱 Responsive and modern UI
+* 🎮 Simple and fun gameplay
+
+---
+
+## 🖼️ Preview
+
+<p align="center">
+  <img src="doc/game.png" width="700"/>
+</p>
+
+---
+
+## 🚀 How to Play
+
+1. Enter your name (if included)
+2. Select a continent or choose **"All"**
+3. A flag will appear on the screen
+4. Choose the correct country from 4 options
+5. Earn points for correct answers
+6. Try to get the highest score! 🏆
+
+---
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3 (Glassmorphism UI)
+* JavaScript (Vanilla JS)
+
+---
+
+## 📡 API Used
 
 This project uses:
 
-https://restcountries.com/
+* 🌍 https://restcountries.com/
 
-For country names, flags, and data.
+Used to fetch country names, flags, and data.
 
+---
+
+## 📂 Project Structure
+
+```bash
 Game/
 │
 ├── css/
@@ -54,22 +75,50 @@ Game/
 ├── game.html
 ├── index.html
 └── README.md
-⚙️ Setup Instructions
-Clone the repository:
-git clone https://github.com/your-username/flag-game.git
-Open the folder in VS Code
-Run index.html in your browser
-🌟 Future Improvements
-🏆 Leaderboard system
-⏱️ Timer mode
-🔥 Streak bonus system
-📊 Accuracy percentage
-🎨 Dark/Light mode toggle
-👨‍💻 Author: Alisina Adeel
+```
 
-Flag Game Project
-Made with ❤️ using JavaScript
+---
 
-📜 License
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Alisina-Adeel/flagGame.git
+```
+
+### 2. Open the project
+
+```bash
+cd flagGame
+```
+
+### 3. Run the project
+
+Open `index.html` in your browser
+
+---
+
+## 🌟 Future Improvements
+
+* 🏆 Leaderboard system
+* ⏱️ Timer mode
+* 🔥 Streak bonus system
+* 📊 Accuracy percentage
+* 🎨 Dark / Light mode toggle
+
+---
+
+## 👨‍💻 Author
+
+**Alisina Adeel**
+
+---
+
+## 📜 License
 
 This project is open source and free to use.
+
+---
+
+⭐ If you like this project, consider giving it a star!
