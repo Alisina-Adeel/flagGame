@@ -27,7 +27,7 @@ Players test their geography knowledge by guessing the correct country from flag
 
 ## 🚀 How to Play
 
-1. Enter your name (if included)
+1. Enter your name
 2. Select a continent or choose **"All"**
 3. A flag will appear on the screen
 4. Choose the correct country from 4 options
@@ -39,8 +39,8 @@ Players test their geography knowledge by guessing the correct country from flag
 ## 🛠️ Technologies Used
 
 * HTML5
-* CSS3 (Glassmorphism UI)
-* JavaScript (Vanilla JS)
+* CSS3 
+* JavaScript 
 
 ---
 
@@ -49,6 +49,7 @@ Players test their geography knowledge by guessing the correct country from flag
 This project uses:
 
 * 🌍 https://restcountries.com/
+🌦️ 🌍 https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true/
 
 Used to fetch country names, flags, and data.
 
@@ -90,7 +91,7 @@ git clone https://github.com/Alisina-Adeel/flagGame.git
 ### 2. Open the project
 
 ```bash
-cd flagGame
+cd Game
 ```
 
 ### 3. Run the project
@@ -120,5 +121,12 @@ Open `index.html` in your browser
 This project is open source and free to use.
 
 ---
+
+## Future Plan
+
+This game will be develop to learn international lanuage learning platform
+
+---
+
 
 ⭐ If you like this project, consider giving it a star!
