@@ -12,13 +12,10 @@ Players test their geography knowledge by guessing the correct country from flag
 ⚡ Dynamic questions using REST Countries API
 📱 Responsive and modern UI
 🎮 Simple and fun gameplay
----
+🖼️ Preview
 
-## 🖼️ Preview
 
-<img src="doc/game.png" width="700"/>
-
----
+![Game Preview](game.png)
 🚀 How to Play
 Enter your name (if included in your version)
 Select a continent or choose "All"
@@ -76,5 +73,3 @@ Made with ❤️ using JavaScript
 📜 License
 
 This project is open source and free to use.
-
-Future Plan
