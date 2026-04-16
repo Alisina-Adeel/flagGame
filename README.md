@@ -16,7 +16,7 @@ Players test their geography knowledge by guessing the correct country from flag
 
 Add your screenshot here
 
-![Game Preview](screenshot.png)
+![Game Preview](game.png)
 🚀 How to Play
 Enter your name (if included in your version)
 Select a continent or choose "All"
