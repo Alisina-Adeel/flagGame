@@ -79,6 +79,7 @@ Game/
 ├── country.html
 ├── game.html
 ├── index.html
+├── NOTES.md  
 ├── playingAsGuest.html
 └── README.md
 ```
