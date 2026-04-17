@@ -49,9 +49,12 @@ Players test their geography knowledge by guessing the correct country from flag
 This project uses:
 
 * 🌍 https://restcountries.com/
-🌦️ 🌍 https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true/
 
 Used to fetch country names, flags, and data.
+
+🌦️ 🌍 https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true/
+
+Used to fetch user location live wheather
 
 ---
 

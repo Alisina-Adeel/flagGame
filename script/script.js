@@ -142,3 +142,16 @@ function goToGame() {
   // Go to new page
   window.location.href = "game.html";
 }
+
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+const menuLinks = document.querySelectorAll("#menu a");
+
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("menu").classList.remove("active");
+  });
+});
