@@ -127,11 +127,6 @@ This project is open source and free to use.
 
 ---
 
-## Future Plan
-
-This game will be develop to learn international lanuage learning platform
-
----
 
 
 ⭐ If you like this project, consider giving it a star!
