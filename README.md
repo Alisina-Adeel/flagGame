@@ -73,7 +73,8 @@ Game/
 │   │   ├── Contactform.jpg
 │   │   ├── Home page.jpg
 │   │   └── How to play.jpg
-│   └── game.png
+│   ├── game.png
+|   └── hero.webp
 │
 ├── country.html
 ├── game.html
