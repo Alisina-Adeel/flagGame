@@ -6,9 +6,9 @@ This file contains research, ideas, and technical notes used during development.
 
 Primary User:
 
-Students (ages 12–20)
-Casual gamers
-People interested in geography
+-Students (ages 12–20)
+-Casual gamers
+-People interested in geography
 
 ## 🌍 APIs Used
 
@@ -46,11 +46,3 @@ https://api.open-meteo.com/v1/forecast?latitude=43.7&longitude=-79.4&current_wea
 - Otherwise game may freeze (fixed with validation)
 
 ---
-
-## 🧩 Known Issues & Fixes
-
-### Issue: Game freezes on small continents
-- Cause: Not enough country options
-- Fix:
-```js
-if (countryData.length < 4) return;
