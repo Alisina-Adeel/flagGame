@@ -116,6 +116,16 @@ Open `index.html` in your browser
 
 ---
 
+## 🧩 Known Issues & Fixes
+
+### Issue: Game freezes on small continents
+- Cause: Not enough country options
+- Fix:
+```js
+if (countryData.length < 4) return;
+
+---
+
 ## 👨‍💻 Author
 
 **Alisina Adeel**
