@@ -75,6 +75,7 @@ Game/
 │   │   └── How to play.jpg
 │   ├── game.png
 |   └── hero.webp
+|   └── favicon.png
 │
 ├── country.html
 ├── game.html
