@@ -4,66 +4,137 @@
   <link rel="icon" href="doc/favicon.png">
 <meta charset="UTF-8">
 <title>Flag Game</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
+  margin: 0;
+  font-family: Arial;
   background: #0f172a;
   color: white;
-  font-family: Arial;
   text-align: center;
-  padding: 30px;
 }
 
-h2 {
-  margin-bottom: 10px;
+/* SCREEN */
+.screen {
+  display: none;
+  padding: 20px;
 }
 
-/* GRID */
+.active {
+  display: block;
+}
+
+/* START SCREEN */
+.start-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.start-screen button {
+  padding: 14px 24px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 250px;
+}
+
+/* GRID (CONTINENTS) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  max-width: 700px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  max-width: 800px;
   margin: 20px auto;
+  padding: 0 10px;
 }
 
 /* CARD */
 .card {
   background: rgba(255,255,255,0.05);
-  padding: 20px;
+  padding: 16px;
   border-radius: 15px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   border: 1px solid #38bdf8;
 }
 
 /* FLAG */
 #flag {
-  width: 200px;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
   border-radius: 10px;
-  margin: 20px 0;
+  margin: 20px auto;
+  display: block;
 }
 
 /* OPTIONS */
 #options button {
   display: block;
-  width: 200px;
-  margin: 8px auto;
-  padding: 10px;
+  width: 90%;
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 12px;
   border-radius: 10px;
   border: none;
   background: #38bdf8;
   cursor: pointer;
+  font-size: 15px;
 }
 
 /* RESULT */
 #result {
   margin-top: 10px;
   font-weight: bold;
+}
+
+/* PLAYER INFO */
+#playerInfo {
+  font-size: 18px;
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  #playerInfo {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  #flag {
+    max-width: 200px;
+  }
+
+  #options button {
+    width: 100%;
+  }
 }
 </style>
 </head>

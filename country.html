@@ -2,72 +2,171 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <link rel="icon" href="doc/favicon.png">
 <title>Flag Game</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    padding: 30px;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
 
-  h1 { text-align: center; }
+  /* fluid spacing instead of fixed padding */
+  padding: clamp(12px, 3vw, 30px);
+  box-sizing: border-box;
+}
 
-  .search-box {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    gap: 10px;
+/* TITLE */
+h1 {
+  text-align: center;
+  font-size: clamp(22px, 4vw, 38px);
+  margin-bottom: 10px;
+}
+
+/* SEARCH BOX */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+/* INPUT */
+input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+
+  font-size: 14px;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.card {
+  background: #111827;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* FLAG IMAGE */
+img {
+  width: clamp(70px, 8vw, 100px);
+  height: auto;
+  border-radius: 10px;
+}
+
+/* WEATHER BOX */
+.weather {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+
+  padding: 12px;
+  width: 200px;
+
+  font-size: 13px;
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 768px) {
+  .weather {
+    width: 160px;
+    font-size: 12px;
   }
 
   input {
-    padding: 12px;
-    width: 300px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-  }
-
-  button {
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    background: #22c55e;
-    color: white;
-    cursor: pointer;
+    max-width: 100%;
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+
+  .weather {
+    position: static;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 20px;
   }
 
   .card {
-    background: #111827;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
-
-  img { width: 100px; border-radius: 10px; }
-
-  .weather {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: #0f172a;
-    border: 1px solid #334155;
     padding: 12px;
-    border-radius: 12px;
-    width: 180px;
-    font-size: 13px;
   }
+}
 </style>
 </head>
 
