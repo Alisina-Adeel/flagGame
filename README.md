@@ -23,7 +23,6 @@ Players test their geography knowledge by guessing the correct country from flag
   <img src="doc/game.png" width="700"/>
 </p>
 
----
 
 ## 🚀 How to Play
 
